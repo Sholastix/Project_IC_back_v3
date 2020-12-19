@@ -3,14 +3,12 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const express = require('express');
 const mongoose = require('mongoose');
-// const passport = require('passport'); // VARIANT 2
 
 // Handle all routes in one file 'index.js' for import convinience.
 const routes = require('./routes/index');
 
 // Importing the authentication middleware.
-const passport = require('./middleware/passport'); // VARIANT 1
-// require('./middleware/passport')(passport) // VARIANT 2
+const passport = require('./middleware/passport');
 
 const app = express();
 
