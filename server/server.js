@@ -3,12 +3,14 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const express = require('express');
 const mongoose = require('mongoose');
+// const passport = require('passport'); // VARIANT 2
 
 // Handle all routes in one file 'index.js' for import convinience.
 const routes = require('./routes/index');
 
 // Importing the authentication middleware.
-const { authMdw } = require('./middleware/authMiddleware');
+const passport = require('./middleware/passport'); // VARIANT 1
+// require('./middleware/passport')(passport) // VARIANT 2
 
 const app = express();
 
@@ -21,12 +23,12 @@ app.use(cors());
 // Working with user identity.
 app.use('/api/', routes.signinRoute, routes.signupRoute, routes.verifyEmailRoute);
 
-// Locking all private routes globally with help of middleware. 
-app.use(authMdw);
+// Locking all private routes globally with help of 'passport' middleware.
+app.use(passport.authenticate('jwt', { session: false }));
 app.use('/api/', routes.exerciseRoute, routes.userRoute, routes.workoutRoute);
 
 // Server start and connect to DB.
-(async function() {
+(async function () {
     try {
         await mongoose.connect(process.env.DB_CONNECT, {
             useCreateIndex: true,

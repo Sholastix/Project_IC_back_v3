@@ -3,8 +3,8 @@ const Exercise = require('../models/Exercise');
 // GET exercises list of specific user (by user ID).
 const exerciseGet = async (req, res) => {
     try {
-        const { userID } = req.user;
-        const exercises = await Exercise.find({ userID });
+        const { _id } = req.user;
+        const exercises = await Exercise.find({ _id });
         res.json(exercises);
     } catch (err) {
         console.error(err);
@@ -24,12 +24,12 @@ const exerciseExactGet = async (req, res) => {
     }
 };
 
-// CREATE new exercises in a list of specific user.
+// CREATE new exercises in a list of specific user (by user ID).
 const exercisePost = async (req, res) => {
     try {
-        const { userID } = req.user;
+        const { _id } = req.user;
         const { name, measureType } = req.body;
-        const exercise = await Exercise.create({ name, measureType, userID });
+        const exercise = await Exercise.create({ _id, name, measureType });
         res.status(201).json({ message: 'Exercise created successfully!', exercise });
     } catch (err) {
         console.error(err);

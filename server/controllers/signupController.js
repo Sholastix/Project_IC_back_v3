@@ -15,7 +15,7 @@ const signup = async (req, res) => {
 
         if (user) {
             console.log(user);
-            res.status(201).json('Registration completed successfully!');
+            res.status(201).json({ message: 'Registration completed successfully!', code: verificationCode });
         }
     } catch (err) {
         console.error(err);
