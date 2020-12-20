@@ -27,7 +27,7 @@ ____________________________________________________________________
 4. Available endpoints (xxxx - connection port from .env):
 
         4.1. http://localhost:xxxx/api/signup - registration page.
-             ATTENTION: after registration you'll get the digital code in POSTMAN response field (or code redactor's terminal/console as well). This code will be needed in verification process. Verification code type in model - NUMBER, in POSTMAN (or something similar) insert this code without quotes.
+             ATTENTION: after registration you'll get the digital code in POSTMAN response field (or code redactor's terminal/console aswell). This code will be needed in verification process. Verification code type in model - NUMBER, in POSTMAN (or something similar) insert this code without quotes.
 
         4.2. http://localhost:xxxx/api/verification - verification page.
              ATTENTION: after verification you'll get the token in POSTMAN response field, but that token not for access to closed routes - only for security of one-time email verification process. Don't copy it, you don't need it at all for application test.
