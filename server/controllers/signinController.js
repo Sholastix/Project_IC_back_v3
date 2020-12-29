@@ -9,15 +9,13 @@ const signin = async (req, res) => {
     const user = await User.findOne({ email })
     if (!user) {
         res.status(401).json({ message: 'Such user doesn\'t exist! Please registrate yourself!' });
+        return;
     }
 
-    const _id = user._id;
-
-    // Set JWT lifespan. 
-    const expiresIn = '1h';
+    const jwtLifespan = '1h';
 
     const jwtPayload = {
-        sub: _id,
+        sub: user._id,
         iat: Date.now(),
     };
 
@@ -28,8 +26,8 @@ const signin = async (req, res) => {
         } else if (!user.active) {
             return res.status(400).json({ message: 'Please verificate yourself from your registration mailbox!' });
         } else {
-            const token = jwt.sign(jwtPayload, process.env.ACCESS_SECRET_KEY, { expiresIn: expiresIn, algorithm: 'HS256' });
-            res.json({ signedToken: 'Bearer ' + token, expires: expiresIn });
+            const token = jwt.sign(jwtPayload, process.env.ACCESS_SECRET_KEY, { expiresIn: jwtLifespan, algorithm: 'HS256' });
+            res.json({ signedToken: 'Bearer ' + token, expiresIn: jwtLifespan });
         }
     } catch (err) {
         console.error(err);

@@ -3,8 +3,7 @@ const Workout = require('../models/Workout');
 // GET workout list (by user ID).
 const workoutGet = async (req, res) => {
     try {
-        const { _id } = req.user;
-        const workouts = await Workout.find({ _id });
+        const workouts = await Workout.find({ owner: req.user._id });
         res.json(workouts);
     } catch (err) {
         console.error(err);
@@ -15,9 +14,8 @@ const workoutGet = async (req, res) => {
 // CREATE new workouts in user's list (by user ID).
 const workoutPost =  async (req, res) => {
     try {
-        const { _id } = req.user;
         const { date, exercises } = req.body;
-        const workout = await Workout.create({ _id, date, exercises });
+        const workout = await Workout.create({ date, exercises, owner: req.user._id });
         res.status(201).json({ message: 'Workout created successfully!', workout });
     } catch (err) {
         console.error(err);

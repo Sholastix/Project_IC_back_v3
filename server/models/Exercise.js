@@ -12,9 +12,10 @@ const ExerciseSchema = new mongoose.Schema(
             required: true,
         },
 
-        userID: { 
+        owner: { 
             type: mongoose.Schema.Types.ObjectId, 
             ref: 'User',
+            required: true,
         },
     },
 

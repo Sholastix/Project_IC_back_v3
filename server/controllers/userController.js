@@ -3,9 +3,7 @@ const User = require('../models/User');
 // GET profile of specific user (by user ID).
 const userGet = async (req, res) => {
     try {
-        const { _id } = req.user;
-        // const user = await User.findById(_id);
-        const user = await User.findOne({ _id: _id });
+        const user = await User.findOne({ _id: req.user._id });
         if (!user) {
             throw new Error('Problem with authorization.');
         }
@@ -19,9 +17,7 @@ const userGet = async (req, res) => {
 // DELETE existed user's profile (by user ID).
 const userDelete = async (req, res) => {
     try {
-        const { _id } = req.user;
-        // const user = await User.findByIdAndDelete(_id);
-        const user = await User.deleteOne({ _id: _id });
+        const user = await User.deleteOne({ _id: req.user._id });
         res.json(user);
     } catch {
         console.error(err);
