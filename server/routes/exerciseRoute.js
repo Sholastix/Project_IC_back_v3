@@ -3,8 +3,8 @@ const { exerciseGet, exerciseExactGet, exercisePost, exercisePut, exerciseDelete
 
 const router = Router();
 
-router.get('/exercise/', exerciseGet);
-router.get('/exercise/:exerciseID', exerciseExactGet);
+// router.get('/exercise/', exerciseGet);
+// router.get('/exercise/:exerciseID', exerciseExactGet);
 router.post('/exercise/', exercisePost);
 router.put('/exercise/:exerciseID', exercisePut);
 router.delete('/exercise/:exerciseID', exerciseDelete);

@@ -3,7 +3,7 @@ const { userGet, userDelete } = require('../controllers/userController');
 
 const router = Router();
 
-router.get('/users/', userGet);
-router.delete('/users/', userDelete);
+router.get('/user/', userGet);
+// router.delete('/user/', userDelete);
 
 module.exports = router;

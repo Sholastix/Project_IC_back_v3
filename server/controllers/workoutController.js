@@ -1,22 +1,28 @@
-const Workout = require('../models/Workout');
+const { User } = require('../models/User');
+const { Workout } = require('../models/Workout');
 
-// GET workout list (by user ID).
-const workoutGet = async (req, res) => {
-    try {
-        const workouts = await Workout.find({ owner: req.user._id });
-        res.json(workouts);
-    } catch (err) {
-        console.error(err);
-        res.json({ message: err.message });
-    }
-};
+// // ONLY FOR TESTING!
+// // GET workout list (by user ID).
+// const workoutGet = async (req, res) => {
+//     try {
+//         const workouts = await Workout.find({ owner: req.user._id });
+//         res.json(workouts);
+//     } catch (err) {
+//         console.error(err);
+//         res.json({ message: err.message });
+//     }
+// };
 
 // CREATE new workouts in user's list (by user ID).
-const workoutPost =  async (req, res) => {
+const workoutPost = async (req, res) => {
     try {
         const { date, exercises } = req.body;
         const workout = await Workout.create({ date, exercises, owner: req.user._id });
         res.status(201).json({ message: 'Workout created successfully!', workout });
+
+        const user = await User.findOne({ _id: req.user._id });
+        user.workouts.push(workout._id);
+        await user.save();
     } catch (err) {
         console.error(err);
         res.json({ message: err.message });
@@ -48,7 +54,7 @@ const workoutDelete = async (req, res) => {
 };
 
 module.exports = {
-    workoutGet,
+    // workoutGet,
     workoutPost,
     workoutPut,
     workoutDelete,

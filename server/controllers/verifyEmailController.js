@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const User = require('../models/User');
+const { User } = require('../models/User');
 
 // E-mail verification.
 const verifyEmail = async (req, res) => {
@@ -8,7 +8,7 @@ const verifyEmail = async (req, res) => {
         const user = await User.findOne({ email });
 
         const jwtLifespan = '1h';
-    
+
         const jwtPayload = {
             sub: user._id,
             iat: Date.now(),

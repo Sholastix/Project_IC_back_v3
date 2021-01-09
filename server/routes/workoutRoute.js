@@ -3,7 +3,7 @@ const { workoutGet, workoutPost, workoutPut, workoutDelete } = require('../contr
 
 const router = Router();
 
-router.get('/workout/', workoutGet);
+// router.get('/workout/', workoutGet);
 router.post('/workout/', workoutPost);
 router.put('/workout/:workoutID', workoutPut);
 router.delete('/workout/:workoutID', workoutDelete);

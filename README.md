@@ -27,32 +27,35 @@ ____________________________________________________________________
 4. Available endpoints (xxxx - connection port from .env):
 
         4.1. http://localhost:xxxx/api/signup - registration page.
+
              ATTENTION: after registration you'll get the digital code in POSTMAN response field (or code redactor's terminal/console aswell). This code will be needed in verification process. Verification code type in model - NUMBER, in POSTMAN (or something similar) insert this code without quotes.
 
         4.2. http://localhost:xxxx/api/verification - verification page.
+
              ATTENTION: after verification you'll get the token in POSTMAN response field, but that token not for access to closed routes - only for security of one-time email verification process. Don't copy it, you don't need it at all for application test.
 
         4.3. http://localhost:xxxx/api/signin - authorization page
+
              ATTENTION: after authorization you'll get the token in POSTMAN response field. Don't forget to use this token for access to closed routes.
              In POSTMAN: choose tab "Authorization" -> choose type "Bearer Token" from dropdown menu -> insert token in appeared field -> now you can use closed route.
 
         4.4. 'USERS'
 
-             http://localhost:xxxx/api/users/
+             http://localhost:xxxx/api/user/
 
-             GET profile of specific user (by user ID from token).
-             DELETE existed user's profile (by user ID from token).
+             GET full profile (basic info, exercises list etc.) of specific user (by user ID from token).
+             DELETE existed user's profile (by user ID from token) - ONLY FOR TESTING!
 
         4.5. 'EXERCISES'
 
              http://localhost:xxxx/api/exercise/                   
 
-             GET exercises list of specific user (by user ID from token).
+             GET exercises list of specific user (by user ID from token) - ONLY FOR TESTING!
              CREATE new exercises in a list of specific user (by user ID from token).
 
              http://localhost:xxxx/api/exercise/:exerciseID
 
-             GET specific exercise (by exercise ID), which belongs to specific user.
+             GET specific exercise (by exercise ID), which belongs to specific user - ONLY FOR TESTING!
              UPDATE already existed exercise (by exercise ID) in a list of specific user.
              DELETE specific exercise (by exercise ID) from list of specific user.
 
@@ -60,7 +63,7 @@ ____________________________________________________________________
 
              http://localhost:xxxx/api/workout/
 
-             GET workout of specific user (by user ID from token).
+             GET workout of specific user (by user ID from token) - ONLY FOR TESTING!
              CREATE new workouts in specific user's list (by user ID from token).
 
              http://localhost:xxxx/api/workout/:workoutID

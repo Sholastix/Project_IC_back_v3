@@ -4,28 +4,41 @@ const UserSchema = new mongoose.Schema(
     {
         email: {
             type: String,
-            required: true,
             unique: true,
             trim: true,
             lowercase: true,
+            required: true,
         },
 
         password: {
             type: String,
-            required: true,
             unique: true,
             trim: true,
+            required: true,
         },
 
         verificationCode: {
             type: Number,
+            required: true,
         },
 
         active: {
             type: Boolean,
-            required: true,
             default: false,
-        }
+            required: true,
+        },
+
+        exercises: [{ 
+            type: mongoose.Schema.Types.ObjectId, 
+            ref: 'Exercise',
+            required: true, 
+        }],
+
+        workouts: [{ 
+            type: mongoose.Schema.Types.ObjectId, 
+            ref: 'Workout',
+            required: true, 
+        }],
     },
 
     {
@@ -34,6 +47,4 @@ const UserSchema = new mongoose.Schema(
     },
 );
 
-const UserModel = mongoose.model('User', UserSchema);
-
-module.exports = UserModel;
+module.exports.User = mongoose.model('User', UserSchema);
