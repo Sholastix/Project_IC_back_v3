@@ -60,6 +60,10 @@ const exerciseDelete = async (req, res) => {
         const { exerciseID } = req.params;
         const exercise = await Exercise.deleteOne({ _id: exerciseID })
         res.json(exercise);
+
+        const user = await User.findOne({ _id: req.user._id });
+        user.exercises.pull({ _id: exerciseID });
+        await user.save();
     } catch (err) {
         console.error(err);
         res.json({ message: err.message });
