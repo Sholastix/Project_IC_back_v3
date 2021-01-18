@@ -8,7 +8,8 @@ const userGet = async (req, res) => {
             .populate({ path: 'workouts', model: 'Workout' });
         if (!user) {
             throw new Error('User not found.');
-        }
+        };
+
         res.json({
             _id: user._id,
             email: user.email,
@@ -19,7 +20,7 @@ const userGet = async (req, res) => {
     } catch (err) {
         console.error(err);
         res.json({ message: err.message });
-    }
+    };
 };
 
 // // ONLY FOR TESTING!
@@ -31,7 +32,7 @@ const userGet = async (req, res) => {
 //     } catch {
 //         console.error(err);
 //         res.json({ message: err.message });
-//     }
+//     };
 // };
 
 module.exports = {

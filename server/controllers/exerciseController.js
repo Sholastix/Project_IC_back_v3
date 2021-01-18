@@ -10,7 +10,7 @@ const { User } = require('../models/User');
 //     } catch (err) {
 //         console.error(err);
 //         res.json({ message: err.message });
-//     }
+//     };
 // };
 
 // // ONLY FOR TESTING!
@@ -23,7 +23,7 @@ const { User } = require('../models/User');
 //     } catch (err) {
 //         console.error(err);
 //         res.json({ message: err.message });
-//     }
+//     };
 // };
 
 // CREATE new exercise in a list of specific user (by user ID).
@@ -39,7 +39,7 @@ const exercisePost = async (req, res) => {
     } catch (err) {
         console.error(err);
         res.json({ message: err.message });
-    }
+    };
 };
 
 // UPDATE already existed exercise (by exercise ID) in a list of specific user.
@@ -51,7 +51,7 @@ const exercisePut = async (req, res) => {
     } catch (err) {
         console.error(err);
         res.json({ message: err.message });
-    }
+    };
 };
 
 // DELETE specific exercise from list of specific user.
@@ -67,7 +67,7 @@ const exerciseDelete = async (req, res) => {
     } catch (err) {
         console.error(err);
         res.json({ message: err.message });
-    }
+    };
 };
 
 module.exports = {

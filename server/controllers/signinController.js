@@ -10,7 +10,7 @@ const signin = async (req, res) => {
     if (!user) {
         res.status(401).json({ message: 'Such user doesn\'t exist! Please registrate yourself!' });
         return;
-    }
+    };
 
     const jwtLifespan = '1h';
 
@@ -28,11 +28,11 @@ const signin = async (req, res) => {
         } else {
             const token = jwt.sign(jwtPayload, process.env.ACCESS_SECRET_KEY, { expiresIn: jwtLifespan, algorithm: 'HS256' });
             res.json({ signedToken: 'Bearer ' + token, expiresIn: jwtLifespan });
-        }
+        };
     } catch (err) {
         console.error(err);
         res.status(500).json({ message: err.message });
-    }
+    };
 };
 
 module.exports = { signin };

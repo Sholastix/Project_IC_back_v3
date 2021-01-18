@@ -33,11 +33,12 @@ app.use('/api/', routes.exerciseRoute, routes.userRoute, routes.workoutRoute);
             useFindAndModify: false,
             useNewUrlParser: true,
             useUnifiedTopology: true,
-        })
+        });
+
         app.listen(process.env.APP_PORT, () => {
             console.log(`Server listening on port ${process.env.APP_PORT}.`);
-        })
+        });
     } catch (err) {
         console.error(`Connection failed: ${process.env.DB_CONNECT}`, err);
-    }
+    };
 }());

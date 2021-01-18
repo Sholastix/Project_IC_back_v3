@@ -16,11 +16,11 @@ const signup = async (req, res) => {
         if (user) {
             console.log(user);
             res.status(201).json({ message: 'Registration completed successfully!', code: verificationCode });
-        }
+        };
     } catch (err) {
         console.error(err);
         res.status(409).json('User with this email already exists.');
-    }
+    };
 };
 
 module.exports = { signup };
